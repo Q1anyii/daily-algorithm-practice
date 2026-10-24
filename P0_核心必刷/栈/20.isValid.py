@@ -25,16 +25,25 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+栈：先进后出。每插入元素时，判断栈顶中是否存在另一半，
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def isValid(self, s: str) -> bool:
-        # TODO: 实现该方法
-        pass
-
+        dic = {")":"(", "]":"[", "}":"{"}
+        stack = []
+        for ch in s:
+            if ch not in dic:
+                stack.append(ch)
+                continue
+            else:
+                if not stack: return False
+            if stack[-1] == dic[ch]:
+                stack.pop()
+            else: return False
+        return len(stack) == 0
 
 # ==================== 测试用例 ====================
 def test_solution():
@@ -46,6 +55,7 @@ def test_solution():
     assert sol.isValid("{[]}") is True
     assert sol.isValid("") is True
     assert sol.isValid("(") is False
+    assert sol.isValid(")") is False
     print('All test cases passed!')
 
 
