@@ -24,29 +24,31 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
 """
 
 # ==================== 代码实现 ====================
 class MinStack:
-    # TODO: 实现该方法
-    pass
+
     def __init__(self):
-        # TODO: 实现该方法
-        pass
-    def push(self, val: int) -> None:
-        # TODO: 实现该方法
-        pass
+        self.stack = []
+        self.astack = []
+
+    def push(self, value: int) -> None:
+        self.stack.append(value)
+        if not self.astack or self.astack[-1] >= value:
+            self.astack.append(value)
+
     def pop(self) -> None:
-        # TODO: 实现该方法
-        pass
+        pop = self.stack.pop()
+        if pop == self.astack[-1]:
+            self.astack.pop()
+
     def top(self) -> int:
-        # TODO: 实现该方法
-        pass
+        return self.stack[-1]
+
     def getMin(self) -> int:
-        # TODO: 实现该方法
-        pass
+        return self.astack[-1]
 
 
 # ==================== 测试用例 ====================

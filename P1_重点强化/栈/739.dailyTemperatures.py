@@ -17,15 +17,26 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+1. **栈里存下标，不存温度值**—— 因为你需要算 "距离几天"。
+2. 栈里的温度是**单调递减**的：如果后面某天比前面高，前面那天就被弹走了。
+3. 遍历每一天 `i`：
+   - 问自己：今天的温度 `temperatures[i]` 比栈顶那天高吗？
+   - 高 → 栈顶那天找到了答案，弹出，答案就是 `i - 栈顶下标`。然后继续看新的栈顶，直到栈空或栈顶温度 >= 今天。
+   - 不高 → 把今天压入栈，继续等后面的天。
 """
 
 # ==================== 代码实现 ====================
 class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        # TODO: 实现该方法
-        pass
+    def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
+        ans = [0] * len(temperatures)
+        stack = []
+        for i in range(len(temperatures)):
+            while stack and temperatures[i] > temperatures[stack[-1]]:
+                p = stack.pop()
+                ans[p] = i - p
+            stack.append(i)
+        return ans
 
 
 # ==================== 测试用例 ====================
