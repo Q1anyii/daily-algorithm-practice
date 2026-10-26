@@ -3,7 +3,7 @@
 难度：中等
 分类：设计
 """
-
+from collections import OrderedDict
 from typing import List, Optional, Dict, Tuple
 
 # ==================== 题目描述 ====================
@@ -28,33 +28,27 @@ from typing import List, Optional, Dict, Tuple
 """
 
 # ==================== 代码实现 ====================
-class DLinkedNode:
-    # TODO: 实现该方法
-    pass
-    def __init__(self, key=0, value=0):
-        # TODO: 实现该方法
-        pass
+from collections import OrderedDict
+
 class LRUCache:
-    # TODO: 实现该方法
-    pass
+
     def __init__(self, capacity: int):
-        # TODO: 实现该方法
-        pass
-    def _remove_node(self, node):
-        # TODO: 实现该方法
-        pass
-    def _add_to_head(self, node):
-        # TODO: 实现该方法
-        pass
-    def _move_to_head(self, node):
-        # TODO: 实现该方法
-        pass
+        self.cache = OrderedDict()
+        self.capacity = capacity
+
     def get(self, key: int) -> int:
-        # TODO: 实现该方法
-        pass
+        if self.cache.get(key):
+            self.cache.move_to_end(key)
+            return self.cache.get(key)
+        else:
+            return -1
+
     def put(self, key: int, value: int) -> None:
-        # TODO: 实现该方法
-        pass
+        if key in self.cache:
+            self.cache.pop(key)
+        elif len(self.cache) == self.capacity:
+            self.cache.popitem(last=False)
+        self.cache[key] = value
 
 
 # ==================== 测试用例 ====================
