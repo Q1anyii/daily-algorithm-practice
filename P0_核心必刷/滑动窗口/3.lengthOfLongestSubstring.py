@@ -25,14 +25,13 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+维护一个左右指针，当不存在重复元素时，右指针向右移动与left取差值，否则left = i + 1
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        # TODO: 实现该方法
         count = left = 0
         dic = {}
         for i in range(len(s)):
@@ -41,7 +40,6 @@ class Solution:
             dic[s[i]] = i
             count = max(count, i - left + 1)
         return count
-
 
 # ==================== 测试用例 ====================
 def test_solution():

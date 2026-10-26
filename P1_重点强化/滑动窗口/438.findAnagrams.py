@@ -4,7 +4,7 @@
 分类：滑动窗口
 """
 
-from typing import List, Optional, Dict, Tuple
+from typing import List, Optional, Dict, Tuple, Counter
 
 # ==================== 题目描述 ====================
 """
@@ -21,15 +21,28 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+1. 先数出 p 的计数表（固定参考）
+2. 窗口每右移一格：左边字符计数 -1，右边新字符计数 +1
+3. 每次移动后比较：窗口计数表 == p 计数表？相等就记下窗口起点
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        # TODO: 实现该方法
-        pass
+        cnt = Counter(p)
+        ans = []
+
+        left = 0
+        for right, c in enumerate(s):
+            cnt[c] -= 1  # 右端点字母进入窗口
+            while cnt[c] < 0:  # 字母 c 太多了
+                cnt[s[left]] += 1  # 左端点字母离开窗口
+                left += 1
+            if right - left + 1 == len(p):  # t 和 p 的每种字母的出现次数都相同（证明见上）
+                ans.append(left)  # t 左端点下标加入答案
+
+        return ans
 
 
 # ==================== 测试用例 ====================
