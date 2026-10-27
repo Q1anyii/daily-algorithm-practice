@@ -20,13 +20,20 @@ from typing import List, Optional, Dict, Tuple
 
 # ==================== 解题思路 ====================
 """
-TODO: 该题已在原仓库 git 提交过（已刷），此版本已移除原思路与代码，请独立重做后自行总结。
+
 """
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # TODO: 已刷，请独立重写实现后再运行测试用例
-        pass
+        profit = 0
+        if not prices: return profit
+        lowest = prices[0]
+        for p in prices:
+            if p == lowest: continue
+            profit = max(profit, p - lowest)
+            if p < lowest:
+                lowest = p
+        return profit
 
 
 # ==================== 测试用例 ====================

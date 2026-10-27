@@ -23,15 +23,20 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+假设最远步数为0，获取nums.length表示目标位置
+判断最远步数是否大于等于当前位置，如果是，则更新最远步数
+当前位置+当前位置值>nums.length，即表示可到达目标位置
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        # TODO: 实现该方法
-        pass
+        k = 0
+        for i in range(len(nums)):
+            if i > k: return False # k无法到达i目标位置，那么返回false
+            k = max(k, i + nums[i]) #当前位置+当前位置步数
+        return True
 
 
 # ==================== 测试用例 ====================
