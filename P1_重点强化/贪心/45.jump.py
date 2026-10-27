@@ -20,16 +20,25 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+和canJump题型类似，不过这次是算次数而非能否跳到最后
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        # TODO: 实现该方法
-        pass
+        p = len(nums) - 1
+        step = 0
 
+        while p > 0:
+            for i in range(p):
+                # 从后往前找，先找到能跳到p的位置，然后再把p换成那个位置，再继续往前找
+                if i + nums[i] >= p:
+                    p = i
+                    step += 1
+                    break
+
+        return step
 
 # ==================== 测试用例 ====================
 def test_solution():

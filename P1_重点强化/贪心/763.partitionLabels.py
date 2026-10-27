@@ -20,16 +20,31 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+1， 首先看第一个字母，找到它在串里最后的一个位置，记作last或一段的最后位置。
+2， 在从0~last这个范围里，挨个查其他字母，看他们的最后位置是不是比刚才的last或一段的最后位置大。
+如果没有刚才的last或一段的最后位置大，无视它继续往后找。
+如果比刚才的大，说明这一段的分隔位置必须往后移动，所以我们把last或一段的最后位置更新为当前的字母的最后位置。
+3，肯定到有一个时间，这个last就更新不了了，那么这个时候这个位置就是我们的分隔位置。
+注意题目要分隔后的长度，我们就用last - startindex + 1。
+4，找到一个分割位，更新一下起始位置，同理搜索就行了。
 """
 
 # ==================== 代码实现 ====================
 class Solution:
-    def partitionLabels(self, s: str) -> List[int]:
-        # TODO: 实现该方法
-        pass
-
+    def partitionLabels(self, S: str) -> List[int]:
+        dic = {s: index for index, s in enumerate(S)}  # 存储某个字母对应地最后一个序号
+        num = 0  # 直接计数
+        result = []
+        j = dic[S[0]]  # 第一个字符的最后位置
+        for i in range(len(S)):  # 逐个遍历
+            num += 1  # 找到一个就加1个长度
+            if dic[S[i]] > j:  # 思路一样，如果最后位置比刚才的大，就更新最后位置
+                j = dic[S[i]]
+            if i == j:  # 思路一样，形式不同，这里就是找到这一段的结束了，就说明当前位置的index和这个字母在字典里的最后位置应该是相同的。
+                result.append(num)  # 加入result
+                num = 0  # 归0
+        return result
 
 # ==================== 测试用例 ====================
 def test_solution():
