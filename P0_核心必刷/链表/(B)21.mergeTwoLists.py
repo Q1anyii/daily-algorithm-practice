@@ -23,16 +23,19 @@ class ListNode:
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+递归思想，
+如果list1为空，那么就直接把后续合并成list2，list2同理
+然后判断list1和list2的值，
+如果list1.val <= list2,那么list1.next就要指向list2,最后返回list1
+否则list2.next指向list1,返回list2
+
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        # TODO: 实现该方法
         pass
-
 
 # ==================== 测试用例 ====================
 def test_solution():

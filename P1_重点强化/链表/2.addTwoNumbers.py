@@ -25,15 +25,29 @@ class ListNode:
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+两数相加，根节点为最高位，尾节点为个位
+相加，再把余数赋值给下一位
+dummy 站岗记开头，cur 跑腿接尾巴，cur 只管往前走，dummy 负责最后交结果。
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        # TODO: 实现该方法
-        pass
+        dummy = ListNode(0)
+        curr = dummy
+        carry = 0
+        while l1 or l2 or carry:
+            a = l1.val if l1 else 0
+            b = l2.val if l2 else 0
+            s = a + b + carry
+            carry = s // 10
+            curr.next = ListNode(s % 10)
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+            curr = curr.next
+        return dummy.next
+
 
 
 # ==================== 测试用例 ====================

@@ -27,16 +27,25 @@ class ListNode:
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+解法一：逐个遍历获取数组，然后再删除，用数组再构建新节点，缺点空间复杂度O（L）
+
+解法二：构建dummy节点，快慢指针，让快指针先走n步， 
+      然后快慢指针一起走直到快指针到终点，slow.next = slow.next.next
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        # TODO: 实现该方法
-        pass
-
+        dummy = ListNode(0, head)
+        fast = slow = dummy
+        for _ in range(n):
+            fast = fast.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next
+        slow.next = slow.next.next
+        return dummy.next
 
 # ==================== 测试用例 ====================
 def test_solution():

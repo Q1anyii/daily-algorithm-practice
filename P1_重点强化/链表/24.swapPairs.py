@@ -27,16 +27,42 @@ class ListNode:
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+递归写法，当head或head.next不存在，直接返回head
+然后temp = head.next 存储head.next,防止交换顺序错乱
+head.next = self.swapPairs(temp.next)，这一步是为了后续交换
+temp.next = head 最后把head.next.next切换成head
+return temp
+
+迭代写法：把curr.next(a) curr.next.next(b)存起来
+然后当前节点的下一个节点指向当前节点的下一个节点的下一个节点(b):  
+再把当前节点的下一个节点(a)的下一个节点指向a的下一个节点的下一个节点(b.next), 
+最后再把b的下一个节点(b.next)指向a，完成交换 
+另外还需要再把a赋值给curr，进行后续节点交换
+
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # TODO: 实现该方法
-        pass
+        # 递归终止条件：没有节点 / 只剩1个节点，不用交换
+        # if not head or not head.next:
+        #     return head
+        # temp = head.next  # temp 是 head 的下一个节点（要换到前面的那个）
+        # head.next = self.swapPairs(temp.next)  # 后面剩下的链表先递归交换好，再接在head后面
+        # temp.next = head  # 把head接到temp的后面，完成这一组交换
+        # return temp  # temp变成这一组的新头，返回给上层
 
+        dummy = ListNode(0, head)
+        curr = dummy
+        while curr.next and curr.next.next:
+            n1 = curr.next
+            n2 = curr.next.next
+            curr.next = n2
+            n1.next = n2.next
+            n2.next = n1
+            curr = n1
+        return dummy.next
 
 # ==================== 测试用例 ====================
 def test_solution():

@@ -27,16 +27,15 @@ class ListNode:
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+方法一：迭代,下一个节点指向当前节点
+方法二：递归，跳步
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # TODO: 实现该方法
         pass
-
 
 # ==================== 测试用例 ====================
 def test_solution():

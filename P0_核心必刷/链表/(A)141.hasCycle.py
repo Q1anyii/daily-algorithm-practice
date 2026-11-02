@@ -24,16 +24,22 @@ class ListNode:
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+双指针，龟兔赛跑，当fast和slow指向同一个位置时，说明存在环，
+fast跳两步，slow一步
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        # TODO: 实现该方法
-        pass
-
+        if not head: return False
+        fast = slow = head.next
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if fast is slow:
+                return True
+        return False
 
 # ==================== 测试用例 ====================
 def test_solution():

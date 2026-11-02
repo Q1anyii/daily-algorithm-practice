@@ -25,13 +25,22 @@ class ListNode:
 # ==================== 解题思路 ====================
 # TODO: 在此填写解题思路
 """
+快慢指针先找环节点，找到环后，重置fast，因为slow已经在环
+然后再次执行一次循环，找到相交节点
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # TODO: 实现该方法
-        pass
+        fast = slow = head
+        while True:
+            if not (fast and fast.next): return None
+            fast, slow = fast.next.next, slow.next
+            if fast is slow: break
+        fast = head
+        while fast is not slow:
+            fast, slow = fast.next, slow.next
+        return fast
 
 
 # ==================== 测试用例 ====================

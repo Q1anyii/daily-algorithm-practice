@@ -29,13 +29,50 @@ class ListNode:
 # ==================== 解题思路 ====================
 # TODO: 在此填写解题思路
 """
+回文链表，使用栈？(空间复杂度O（n）)
+
+联合两种算法（找中间节点 & 反转链表）， 将中间节点后的链表进行反转然后逐个对比值
 """
 
 # ==================== 代码实现 ====================
 class Solution:
+    def middleNode(self, head: Optional[ListNode]):
+        fast = slow = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+        return slow
+
+    def reverseList(self, head: Optional[ListNode]):
+        cur, prev = head, None
+        while cur:
+            temp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = temp
+
+        return prev
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        # TODO: 实现该方法
-        pass
+        mid = self.middleNode(head)
+        h2 = self.reverseList(mid)
+        while h2:
+            if head.val != h2.val:
+                return False
+            head = head.next
+            h2 = h2.next
+        return True
+
+        # stack = []
+        # cur = head
+        # while cur:
+        #     stack.append(cur.val)
+        #     cur = cur.next
+        # cur = head
+        # while cur:
+        #     if cur.val != stack.pop():
+        #         return False
+        #     cur = cur.next
+        # return True
 
 
 # ==================== 测试用例 ====================

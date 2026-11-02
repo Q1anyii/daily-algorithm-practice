@@ -23,14 +23,14 @@ class ListNode:
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
+pA 和 pB， 如果pA走完了，那就走pB的路， pB同理
+当pA和pB相交时，那么就说明他们存在相交点
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        # TODO: 实现该方法
         pass
 
 
