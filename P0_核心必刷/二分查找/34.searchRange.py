@@ -33,35 +33,28 @@ class Solution:
         if not nums:
             return [-1, -1]
 
-        def find_left():
-            left = 0
-            right = len(nums) - 1
-            while left < right:
-                mid = (left + right) // 2
-                if nums[mid] < target:
-                    left = mid + 1
-                else:
-                    right = mid
-            return left if nums[left] == target else -1
-
-        def find_right():
+        def find_left_else_right(flag):
             left, right = 0, len(nums) - 1
             while left < right:
-                mid = (left + right + 1) // 2  # 上取整，关键！
-                if nums[mid] > target:
-                    right = mid - 1  # 右边界只可能在左半
+                if flag:
+                    mid = (left + right) // 2
+                    if nums[mid] < target:
+                        left = mid + 1
+                    else:
+                        right = mid
                 else:
-                    left = mid  # nums[mid] <= target，右边界在 mid 或更右
-            return left if nums[left] == target else -1
+                    mid = (left + right + 1) // 2
+                    if nums[mid] > target:
+                        right = mid - 1
+                    else:
+                        left = mid
+            return left if nums[left] == target else - 1
 
-        left_idx = find_left()
+        left_idx = find_left_else_right(True)
         if left_idx == -1:  # 左边界都不存在 → 整体不存在
             return [-1, -1]
-        right_idx = find_right()
+        right_idx = find_left_else_right(False)
         return [left_idx, right_idx]
-
-
-
 
 
 # ==================== 测试用例 ====================

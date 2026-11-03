@@ -40,8 +40,7 @@ class Solution:
             return False
         col = len(matrix[0])
         row = len(matrix)
-        left = 0
-        right = col * row - 1
+        left, right = 0, col * row - 1
         while left < right:
             mid = (left + right) // 2
             middle = matrix[mid // col][mid % col]
@@ -52,10 +51,6 @@ class Solution:
             else:
                 right = mid
         return matrix[left // col][left % col] == target
-
-
-
-
 
 
 # ==================== 测试用例 ====================
