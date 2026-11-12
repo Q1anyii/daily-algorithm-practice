@@ -36,28 +36,20 @@ class TreeNode:
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        # if not root: return 0
-        # max_depth = 0
-        # from collections import deque
-        # q = deque([root])
-        # while q:
-        #     cur_size = len(q)
-        #     cur_level = []
-        #     for _ in range(cur_size):
-        #         node = q.popleft()
-        #         cur_level.append(node.val)
-        #         if node.left:
-        #             q.append(node.left)
-        #         if node.right:
-        #             q.append(node.right)
-        #     max_depth += 1
-        # return max_depth
         if not root: return 0
-        """
-        若两个节点都无子节点，那么就把这一层的深度返回
-        """
-        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
-
+        # return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+        max_depth = 0
+        from collections import deque
+        queue = deque([root])
+        while queue:
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            max_depth += 1
+        return max_depth
 
 
 # ==================== 测试用例 ====================

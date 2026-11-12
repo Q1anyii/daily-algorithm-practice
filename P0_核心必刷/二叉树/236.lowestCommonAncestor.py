@@ -38,17 +38,12 @@ class TreeNode:
 # ==================== 代码实现 ====================
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode | None':
-        if not root: return None
-        if root is q or root is p: return root
-        left_sig = self.lowestCommonAncestor(root.left, p, q)
-        right_sig = self.lowestCommonAncestor(root.right, p, q)
-        if left_sig and right_sig: return root
-        elif left_sig:
-            return left_sig
-        elif right_sig:
-            return right_sig
-        else:
-            return None
+        if not root or root is p or root is q: return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if not left: return right
+        if not right: return left
+        return root
 
 # ==================== 测试用例 ====================
 def test_solution():

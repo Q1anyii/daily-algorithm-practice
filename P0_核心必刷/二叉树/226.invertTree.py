@@ -30,6 +30,7 @@ class TreeNode:
         root.left.left, root.right.right = root.right.right, root.left.left
         root.left.right, root.right.left = root.right.left, root.left.right
         这样循环往复直到root为空
+    因此可以直接采用递归形式，由此一路往下，为空则返回None
 """
 
 class Solution:

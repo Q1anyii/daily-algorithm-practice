@@ -43,24 +43,22 @@ stack can solve this helpful
 """
 
 class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def inorderTraversal(self, root: TreeNode | None) -> list[int]:
         if not root: return []
-        if not root.left and not root.right: return [root.val]
 
-        def inorder(node):
-            res = []
-            stack = []
-            cur = node
-            while cur or stack:
-                while cur:
-                    stack.append(cur)
-                    cur = cur.left
-                cur = stack.pop()
-                res.append(cur.val)
-                cur = cur.right
-            return res
+        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
 
-        return inorder(root)
+        stack = []
+        res = []
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            res.append(root.val)
+            root = root.right
+
+        return res
 
 
 # ==================== 测试用例 ====================

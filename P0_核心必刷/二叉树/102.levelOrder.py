@@ -25,36 +25,30 @@ class TreeNode:
 
 # ==================== 解题思路 ====================
 """
-初始化队列存储root根节点
-while q不为空
-    获取q中的节点大小，对节点数遍历
-        取q.popleft()即最左节点
-        然后把该节点的左右子节点存入q
-        然后把节点的左右子节点放入队列
-        然后该最左子节点即清空，最左节点变成该节点的右节点，然后继续循环
+队列存储，可以根据从左到右，从上到下的顺序，依次popleft取。
+这样就可以按顺序逐个存入和取出
 """
 
 # ==================== 代码实现 ====================
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        # 二叉树为空 返回空值
         if not root: return []
         res = []
         from collections import deque
-        q = deque([root])
-        while q:
-            cur_size = len(q)
+        queue = deque([root])
+        #每一次queue判断就是对一层的遍历
+        while queue:
+            #获取cur_size,这取决于当前层级有多少个节点，从而逐个获取
             cur_level = []
-            for _ in range(cur_size):
-                node = q.popleft()
+            for _ in range(len(queue)):
+                node = queue.popleft()
                 cur_level.append(node.val)
                 if node.left:
-                    q.append(node.left)
+                    queue.append(node.left)
                 if node.right:
-                    q.append(node.right)
+                    queue.append(node.right)
             res.append(cur_level)
         return res
-
 
 # ==================== 测试用例 ====================
 def test_solution():

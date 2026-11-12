@@ -38,15 +38,12 @@ class TreeNode:
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if not root: return True
-        def dfs(a:TreeNode, b:TreeNode):
-            # 两个都为空： 对称
-            if not a and not b : return True
-            # 一空，不对称
-            if not a or not b : return False
-            if a.val != b.val : return False
-            left_ok = dfs(a.left, b.right)
-            right_ok = dfs(b.left, a.right)
-            return left_ok and right_ok
+
+        def dfs(left, right):
+            if not left and not right: return True
+            if not left or not right: return False
+            return left.val == right.val and dfs(left.left, right.right) and dfs(left.right, right.left)
+
         return dfs(root.left, root.right)
 
 # ==================== 测试用例 ====================

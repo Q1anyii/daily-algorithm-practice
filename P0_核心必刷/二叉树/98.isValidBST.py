@@ -36,15 +36,10 @@ all trees must have left or right
 
 # ==================== 代码实现 ====================
 class Solution:
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+    def isValidBST(self, root: Optional[TreeNode], low=float("-inf"), high=float("inf")) -> bool:
         if not root: return True
-        def validate(node, low=float("-inf"), high=float("inf")):
-            if not node: return True
-            if not (low < node.val < high): return False
-            left_true = validate(node.left, low, node.val)
-            right_true = validate(node.right, node.val, high)
-            return left_true and right_true
-        return validate(root)
+        if not (low < root.val < high): return False
+        return self.isValidBST(root.left, low, root.val) and self.isValidBST(root.right, root.val, high)
 
 
 # ==================== 测试用例 ====================
