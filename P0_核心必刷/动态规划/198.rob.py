@@ -30,18 +30,17 @@ dp[i] = max(dp[i-1], dp[i-2] + nums[i])
 # ==================== 代码实现 ====================
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        # cache = {}
-        # def dfs(n):
-        #     if n == 0 : return nums[n]
-        #     if n == 1 : return max(nums[0], nums[1])
-        #     if n in cache: return cache[n]
-        #     cache[n] = max(dfs(n - 1), dfs(n - 2) + nums[n])
-        #     return cache[n]
-        # return dfs(len(nums) - 1)
+        cache = {}
+        def dfs(n):
+            if n == 0 or n == 1 : return max(nums[0], nums[n])
+            if n in cache: return cache[n]
+            cache[n] = max(dfs(n - 1), dfs(n - 2) + nums[n])
+            return cache[n]
+        return dfs(len(nums) - 1)
 
         prev2, prev1 = 0, nums[0]
-        for x in nums[1:]:
-            prev2, prev1 = prev1, max(prev1, prev2 + x)
+        for n in nums[1:]:
+            prev2, prev1 = prev1, max(prev1, prev2 + n)
         return prev1
 
 # ==================== 测试用例 ====================

@@ -29,11 +29,10 @@ from typing import List, Optional, Dict, Tuple
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         if not nums : return 0
-        n = len(nums)
-        dp = [1] * n  # 每个位置单独一个元素，长度至少 1
-        for i in range(n):  # 外层：以 i 结尾
-            for j in range(i):  # 内层：扫前面所有位置
-                if nums[j] < nums[i]:  # 只有更小的才能接在链尾
+        dp = [1] * len(nums)
+        for i in range(len(nums)):
+            for j in range(i):
+                if nums[j] < nums[i]:
                     dp[i] = max(dp[i], dp[j] + 1)
         return max(dp)
 

@@ -43,11 +43,11 @@ path(i, j) = path(i-1, j) + path(i, j-1)
 # ==================== 代码实现 ====================
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        cache = {}  # 只创建一次
+        cache = {}
         def dfs(m, n):
             if m == 1 or n == 1: return 1
             if (m, n) in cache: return cache[(m, n)]
-            cache[(m, n)] = dfs(m - 1, n) + dfs(m, n - 1)  # 算一次
+            cache[(m, n)] = dfs(m - 1, n) + dfs(m, n - 1)
             return cache[(m, n)]
         return dfs(m, n)
 

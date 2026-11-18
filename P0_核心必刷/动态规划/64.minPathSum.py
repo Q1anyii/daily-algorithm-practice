@@ -31,18 +31,18 @@ from typing import List, Optional, Dict, Tuple
 # ==================== 代码实现 ====================
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
-        m, n = len(grid), len(grid[0])
-        for i in range(m):
-            for j in range(n):
-                if i == 0 and j == 0 : continue
-                if i == 0: grid[i][j] += grid[i][j - 1]
-                elif j == 0: grid[i][j] += grid[i - 1][j]
-                else: grid[i][j] += min(grid[i - 1][j], grid[i][j - 1])
-        return grid[-1][-1]
+        # m, n = len(grid), len(grid[0])
+        # for i in range(m):
+        #     for j in range(n):
+        #         if i == 0 and j == 0 : continue
+        #         if i == 0: grid[i][j] += grid[i][j - 1]
+        #         elif j == 0: grid[i][j] += grid[i - 1][j]
+        #         else: grid[i][j] += min(grid[i - 1][j], grid[i][j - 1])
+        # return grid[-1][-1]
 
         def dfs(i, j):
             if i < 0 or j < 0 : return float("inf")
-            if i == 0 and j == 0 : return grid[0][0]
+            if i == 0 and j == 0 : return grid[i][j]
             return grid[i][j] + min(dfs(i - 1, j), dfs(i, j - 1))
         return dfs(len(grid) - 1, len(grid[0]) - 1)
 
