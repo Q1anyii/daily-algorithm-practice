@@ -33,7 +33,7 @@ class Solution:
         if not height: return max_area
         left, right = 0, len(height) - 1
         while left < right:
-            max_area = max(max_area, min(height[left], height[right]) * (right - left))
+            max_area = max(max_area, (right - left) * min(height[left], height[right]))
             if height[left] < height[right]:
                 left += 1
             else:
