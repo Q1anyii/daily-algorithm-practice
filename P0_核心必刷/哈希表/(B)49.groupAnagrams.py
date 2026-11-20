@@ -35,6 +35,14 @@ class Solution:
         #     dict_[tuple(sorted(s))].append(s)
         # return list(dict_.values())
 
+        ht = {}
+        for s in strs:
+            sorted_s = tuple(sorted(s))
+            if sorted_s not in ht:
+                ht[sorted_s] = []
+            ht[sorted_s].append(s)
+        return list(ht.values())
+
         from collections import defaultdict
         groups = defaultdict(list)
         for s in strs:

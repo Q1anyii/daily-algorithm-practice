@@ -3,7 +3,6 @@
 难度：中等
 分类：哈希表
 """
-from collections import defaultdict
 from typing import List, Optional, Dict, Tuple
 
 # ==================== 题目描述 ====================
@@ -28,18 +27,19 @@ from typing import List, Optional, Dict, Tuple
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        if not nums: return 0
-        dict_ = defaultdict(int)
-        for n in nums: dict_[n] = 1
-        longest = 0
-        for n in nums:
-            if n - 1 not in dict_:
-                curr, length = n, 1
-                while n + length in dict_:
-                    curr += 1
-                    length += 1
-                longest = max(longest, length)
-        return longest
+        nums_set = set(nums)
+        max_len = 0
+
+        for n in nums_set:
+            if n - 1 not in nums_set:
+                cur_num, cur_len = n, 1
+                while cur_num + 1 in nums_set:
+                    cur_len += 1
+                    cur_num += 1
+                max_len = max(max_len, cur_len)
+
+        return max_len
+
 
 # ==================== 测试用例 ====================
 def test_solution():

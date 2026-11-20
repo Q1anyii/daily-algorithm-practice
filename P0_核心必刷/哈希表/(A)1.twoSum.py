@@ -30,13 +30,12 @@ from typing import List, Optional, Dict, Tuple
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         if not nums: return []
-        dict_ = {}
+        seen = {}
         for i in range(len(nums)):
             diff = target - nums[i]
-            if diff in dict_:
-                return [dict_[diff], i]
-            else:
-                dict_[nums[i]] = i
+            if diff in seen:
+                return [i, seen[diff]]
+            seen[nums[i]] = i
         return []
 
 # ==================== 测试用例 ====================
