@@ -32,20 +32,16 @@ class Solution:
         res = []
 
         def backtrack(start, path, remaining):
-            # 判断remaining是否为0， 如果为0，那么就说明path可以满足条件，则存入res
-            if remaining == 0:
-                res.append(path[:])
+            if remaining == 0: res.append(path[:])
             for i in range(start, len(candidates)):
-                # 判断candidates[i] > remaining: True: no another item could in condition
                 if candidates[i] > remaining:
                     break
                 path.append(candidates[i])
                 backtrack(i, path, remaining - candidates[i])
-                path.pop() # 这一步是关键，用于剔除已满足的元素，然后计算新元素的组合
+                path.pop()
 
         backtrack(0, [], target)
         return res
-
 
 # ==================== 测试用例 ====================
 def test_solution():

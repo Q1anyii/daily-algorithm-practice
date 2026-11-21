@@ -32,20 +32,16 @@ class Solution:
         used = [False] * len(nums)
         res = []
         def backtrack(path):
-            if len(path) == len(nums):
-                res.append(path[:])
-                return
+            if len(path) == len(nums): res.append(path[:])
             for i in range(len(nums)):
-                if used[i]:
-                    continue
+                if used[i]: continue
                 path.append(nums[i])
                 used[i] = True
                 backtrack(path)
                 path.pop()
-                used[i] =False
+                used[i] = False
         backtrack([])
         return res
-
 
 # ==================== 测试用例 ====================
 def test_solution():

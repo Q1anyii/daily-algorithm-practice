@@ -28,7 +28,6 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
         def backtrack(start, path):
-            # 如何防止循环添加元素？
             res.append(path[:])
             for i in range(start, len(nums)):
                 path.append(nums[i])
@@ -36,7 +35,6 @@ class Solution:
                 path.pop()
         backtrack(0, [])
         return res
-
 
 # ==================== 测试用例 ====================
 def test_solution():
