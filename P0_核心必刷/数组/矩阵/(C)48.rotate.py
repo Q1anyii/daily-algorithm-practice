@@ -33,6 +33,7 @@ class Solution:
         for i in range(len(matrix)):
             for j in range(i + 1, len(matrix[0])):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
         for i in range(len(matrix)):
             l, r = 0, len(matrix[0]) - 1
             while l < r:

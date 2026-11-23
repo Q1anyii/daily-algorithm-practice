@@ -35,17 +35,16 @@ class Solution:
             if i == 0:
                 prefix.append(nums[i])
             else:
-                prefix.append(prefix[i-1] * nums[i])
-        res = [1] * len(nums)  # 预分配，按正序填，省得反转
+                prefix.append(prefix[i - 1] * nums[i])
         suffix = 1
+        res = [1] * len(nums)
         for i in range(len(nums) - 1, -1, -1):
             if i == 0:
                 res[i] = suffix
                 break
-            res[i] = prefix[i - 1] * suffix  # i=0 时 prefix[i-1] 越界，单独处理为 1
-            suffix *= nums[i]  # 用完再更新
+            res[i] = prefix[i - 1] * suffix
+            suffix *= nums[i]
         return res
-
 
 # ==================== 测试用例 ====================
 def test_solution():
