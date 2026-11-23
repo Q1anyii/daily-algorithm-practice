@@ -33,16 +33,19 @@ from typing import List, Optional, Dict, Tuple
 # ==================== 代码实现 ====================
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        candidate = nums[0]
-        count = 0
-        for n in nums:
-            if count == 0:
-                candidate = n
-            if n == candidate:
-                count += 1
-            else:
-                count -= 1
-        return candidate
+        # candidate = nums[0]
+        # count = 0
+        # for n in nums:
+        #     if count == 0:
+        #         candidate = n
+        #     if n == candidate:
+        #         count += 1
+        #     else:
+        #         count -= 1
+        # return candidate
+
+        nums.sort()
+        return nums[len(nums) // 2]
 
 
 # ==================== 测试用例 ====================

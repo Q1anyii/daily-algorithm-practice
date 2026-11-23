@@ -36,10 +36,8 @@ class Solution:
         m, n = len(grid), len(grid[0])
 
         def dfs(i, j):
-        # 提示：边界和字符不匹配用同一个 if 合并判断
-            if i < 0 or i >= m or j < 0 or j >= n or grid[i][j] == "0":
-                return  # 越界或非陆地 → 直接返回
-            grid[i][j] = "0"  # 沉岛：标记已访问
+            if i < 0 or i >= m or j >= n or j < 0 or grid[i][j] == "0": return
+            grid[i][j] = "0"
             dfs(i + 1, j)
             dfs(i - 1, j)
             dfs(i, j + 1)
@@ -48,9 +46,10 @@ class Solution:
         count = 0
         for i in range(m):
             for j in range(n):
-                if grid[i][j] == '1':
-                    count += 1  # 发现新岛屿起点
-                    dfs(i, j)  # 淹没整片
+                if grid[i][j] == "1":
+                    count += 1
+                    dfs(i, j)
+
         return count
 # ==================== 测试用例 ====================
 def test_solution():

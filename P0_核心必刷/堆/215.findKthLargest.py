@@ -32,9 +32,9 @@ class Solution:
         import heapq
         heap = nums[:k]
         heapq.heapify(heap)
-        for x in nums[k:]:
-            if x > heap[0]:  # 新数比堆顶（当前第 k 大）大 → 挤进前 k
-                heapq.heapreplace(heap, x)
+        for n in nums[k:]:
+            if n > heap[0]:
+                heapq.heapreplace(heap, n)
         return heap[0]
 
 # ==================== 测试用例 ====================
