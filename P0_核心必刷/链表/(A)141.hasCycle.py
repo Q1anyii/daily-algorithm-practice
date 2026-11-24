@@ -32,14 +32,7 @@ fast跳两步，slow一步
 # ==================== 代码实现 ====================
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if not head: return False
-        fast = slow = head.next
-        while fast and fast.next:
-            fast = fast.next.next
-            slow = slow.next
-            if fast is slow:
-                return True
-        return False
+        pass
 
 # ==================== 测试用例 ====================
 def test_solution():

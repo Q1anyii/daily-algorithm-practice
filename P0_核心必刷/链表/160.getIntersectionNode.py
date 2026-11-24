@@ -33,7 +33,6 @@ class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
         pass
 
-
 # ==================== 测试用例 ====================
 def test_solution():
     # 构造相交链表
