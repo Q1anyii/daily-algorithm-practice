@@ -31,8 +31,7 @@ class Solution:
         for p in prices:
             if p == lowest: continue
             profit = max(profit, p - lowest)
-            if p < lowest:
-                lowest = p
+            lowest = min(lowest, p)
         return profit
 
 

@@ -34,10 +34,9 @@ class Solution:
     def canJump(self, nums: List[int]) -> bool:
         k = 0
         for i in range(len(nums)):
-            if i > k: return False # k无法到达i目标位置，那么返回false
-            k = max(k, i + nums[i]) #当前位置+当前位置步数
+            if i > k: return False
+            k = max(k, i + nums[i])
         return True
-
 
 # ==================== 测试用例 ====================
 def test_solution():
