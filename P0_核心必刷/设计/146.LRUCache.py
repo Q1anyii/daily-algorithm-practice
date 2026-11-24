@@ -23,7 +23,6 @@ from typing import List, Optional, Dict, Tuple
 
 
 # ==================== 解题思路 ====================
-# TODO: 在此填写解题思路
 """
 """
 
@@ -37,17 +36,18 @@ class LRUCache:
         self.capacity = capacity
 
     def get(self, key: int) -> int:
-        if self.cache.get(key):
+        if key in self.cache:
             self.cache.move_to_end(key)
-            return self.cache.get(key)
+            return self.cache[key]
         else:
             return -1
 
     def put(self, key: int, value: int) -> None:
         if key in self.cache:
             self.cache.pop(key)
-        elif len(self.cache) == self.capacity:
-            self.cache.popitem(last=False)
+        else:
+            if len(self.cache) == self.capacity:
+                self.cache.popitem(last=False)
         self.cache[key] = value
 
 

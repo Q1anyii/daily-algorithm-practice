@@ -32,7 +32,7 @@ from typing import List, Optional, Dict, Tuple
 # ==================== 代码实现 ====================
 class Solution:
     def isValid(self, s: str) -> bool:
-        dic = {")":"(", "]":"[", "}":"{"}
+        dic = {"}": "{", ")": "(", "]": "["}
         stack = []
         for ch in s:
             if ch not in dic:
