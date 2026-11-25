@@ -1,9 +1,27 @@
 {
   "updated": "2026-11-25",
+  "stage": "p0",
+  "pools": {
+    "p0": {
+      "dir": "P0_核心必刷",
+      "total": 41,
+      "fluent_target": 29
+    },
+    "p1": {
+      "dir": "P1_重点强化",
+      "total": 36,
+      "fluent_target": 26
+    },
+    "p2": {
+      "dir": "P2_进阶选刷",
+      "total": 14,
+      "fluent_target": null
+    }
+  },
   "policy": {
     "daily_count": 3,
     "p1_max_per_day": 1,
-    "p1_probability": 0.25,
+    "random_pool_swap_probability": 0.25,
     "interval_by_streak": {
       "1": 7,
       "2": 14,
