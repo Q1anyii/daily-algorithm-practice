@@ -1,0 +1,43 @@
+{
+  "updated": "2026-11-25",
+  "policy": {
+    "daily_count": 3,
+    "p1_max_per_day": 1,
+    "p1_probability": 0.25,
+    "fluent_interval_days": 7,
+    "first_attempt_stuck_retry_days": 3,
+    "forgot_to_fluent_streak": 2
+  },
+  "records": [
+    {
+      "id": 94,
+      "slug": "inorderTraversal",
+      "source": "P0",
+      "status": "first_attempt",
+      "last_date": "2026-11-25",
+      "due_date": "2026-12-02",
+      "streak": 1,
+      "note": "顺畅；递归与迭代两版都写了，提交迭代版"
+    },
+    {
+      "id": 141,
+      "slug": "hasCycle",
+      "source": "P0",
+      "status": "first_attempt",
+      "last_date": "2026-11-25",
+      "due_date": "2026-12-02",
+      "streak": 1,
+      "note": "顺畅；快慢指针，无额外空间"
+    },
+    {
+      "id": 62,
+      "slug": "uniquePaths",
+      "source": "P0",
+      "status": "first_attempt",
+      "last_date": "2026-11-25",
+      "due_date": "2026-11-28",
+      "streak": 0,
+      "note": "首次做、卡几分钟；秒想到 DP，卡在表格构造，最终一维滚动数组 O(n) 空间；3 天后重做一次"
+    }
+  ]
+}
