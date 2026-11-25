@@ -4,8 +4,13 @@
     "daily_count": 3,
     "p1_max_per_day": 1,
     "p1_probability": 0.25,
-    "fluent_interval_days": 7,
+    "interval_by_streak": {
+      "1": 7,
+      "2": 14,
+      "3+": 30
+    },
     "first_attempt_stuck_retry_days": 3,
+    "forgot_retry_days": 1,
     "forgot_to_fluent_streak": 2
   },
   "records": [
