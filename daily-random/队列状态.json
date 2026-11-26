@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "stage": "p0",
   "pools": {
     "p0": {
@@ -29,7 +29,8 @@
     },
     "first_attempt_stuck_retry_days": 3,
     "forgot_retry_days": 1,
-    "forgot_to_fluent_streak": 2
+    "forgot_to_fluent_streak": 2,
+    "p0_default_seen": true
   },
   "records": [
     {
@@ -61,6 +62,36 @@
       "due_date": "2026-11-28",
       "streak": 0,
       "note": "首次做、卡几分钟；秒想到 DP，卡在表格构造，最终一维滚动数组 O(n) 空间；3 天后重做一次"
+    },
+    {
+      "id": 64,
+      "slug": "minPathSum",
+      "source": "P0",
+      "status": "forgot",
+      "last_date": "2026-11-26",
+      "due_date": "2026-11-27",
+      "streak": 0,
+      "note": "往前做过；独立想了约 10 分钟写出原地 DP，一维滚动数组看讲解才写出；次日优先重做"
+    },
+    {
+      "id": 1,
+      "slug": "twoSum",
+      "source": "P0",
+      "status": "forgot",
+      "last_date": "2026-11-26",
+      "due_date": "2026-11-27",
+      "streak": 0,
+      "note": "往前做过；一开始卡住，返回时把 seen[target - nums[i]] 误写成 seen[nums[i]]；次日优先重做"
+    },
+    {
+      "id": 236,
+      "slug": "lowestCommonAncestor",
+      "source": "P0",
+      "status": "forgot",
+      "last_date": "2026-11-26",
+      "due_date": "2026-11-27",
+      "streak": 0,
+      "note": "往前做过；只写出递归框架，看思路才补完；次日优先重做"
     }
   ]
 }
