@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "stage": "p0",
   "pools": {
     "p0": {
@@ -68,30 +68,30 @@
       "slug": "minPathSum",
       "source": "P0",
       "status": "forgot",
-      "last_date": "2026-11-26",
-      "due_date": "2026-11-27",
-      "streak": 0,
-      "note": "往前做过；独立想了约 10 分钟写出原地 DP，一维滚动数组看讲解才写出；次日优先重做"
+      "last_date": "2026-11-27",
+      "due_date": "2026-12-04",
+      "streak": 1,
+      "note": "重做顺畅，用例全过；但第 46 行条件写成 n == 0（应为 j == 0），靠 dp 初值为 0 才侥幸算对，下次重点看这个边界"
     },
     {
       "id": 1,
       "slug": "twoSum",
       "source": "P0",
       "status": "forgot",
-      "last_date": "2026-11-26",
-      "due_date": "2026-11-27",
-      "streak": 0,
-      "note": "往前做过；一开始卡住，返回时把 seen[target - nums[i]] 误写成 seen[nums[i]]；次日优先重做"
+      "last_date": "2026-11-27",
+      "due_date": "2026-12-04",
+      "streak": 1,
+      "note": "重做顺畅，先查再存的顺序写对，未再出现下标与值混淆"
     },
     {
       "id": 236,
       "slug": "lowestCommonAncestor",
       "source": "P0",
       "status": "forgot",
-      "last_date": "2026-11-26",
-      "due_date": "2026-11-27",
-      "streak": 0,
-      "note": "往前做过；只写出递归框架，看思路才补完；次日优先重做"
+      "last_date": "2026-11-27",
+      "due_date": "2026-12-04",
+      "streak": 1,
+      "note": "重做顺畅，递归框架与返回条件一次写全"
     }
   ]
 }
